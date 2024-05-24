@@ -1,21 +1,13 @@
 package org.example.passwordmanager.User.Models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@Table(name = "Users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class UpdateUserModel {
     private Long userId;
     private LocalDateTime creation_date;
     private String email;
