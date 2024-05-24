@@ -1,12 +1,9 @@
-package org.example.passwordmanager.Password.Models;
+package org.example.passwordmanager.PasswordHistory.Models;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.passwordmanager.Category.Models.Category;
 import org.example.passwordmanager.Platform.Models.Platform;
 import org.example.passwordmanager.User.Models.User;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -14,11 +11,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "Passwords")
-public class Password {
+@Table(name = "PasswordHistory")
+public class PasswordHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long passwordId;
+    private Long historyId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -28,11 +26,7 @@ public class Password {
     @JoinColumn(name = "platform_id")
     private Platform platform;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    private String previousEncryptedPassword;
+    private String changeDate;
 
-    private String platformUsername;
-    private String password;
-    private LocalDateTime creationDate;
 }
