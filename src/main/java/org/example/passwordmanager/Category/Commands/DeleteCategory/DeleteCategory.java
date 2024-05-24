@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeleteCategory implements IDeleteCategory{
 
+
     @Autowired
     private CategoryRepository _repository;
 
     public void execute(Long categoryId) {
         _repository.deleteById(categoryId);
     }
-
 }
