@@ -1,5 +1,7 @@
 package org.example.passwordmanager.Password.Commands.CreatePassword;
 
-public interface ICreatePassword {
+import org.example.passwordmanager.Password.Models.CreatePasswordModel;
 
+public interface ICreatePassword {
+    CreatePasswordModel Execute(CreatePasswordModel model);
 }
