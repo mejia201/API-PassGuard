@@ -13,5 +13,5 @@ public class UpdatePlatformModel {
     private String description;
     private String platform_name;
     private String url;
-    private long userId;
+    private long user_id;
 }

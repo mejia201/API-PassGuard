@@ -10,5 +10,5 @@ public class UpdateCategoryModel {
     private Long categoryId;
     private String categoryName;
     private String description;
-    private long userId;
+    private long user_id;
 }
