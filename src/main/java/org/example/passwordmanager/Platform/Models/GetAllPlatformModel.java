@@ -13,5 +13,5 @@ public class GetAllPlatformModel {
     private String description;
     private String platform_name;
     private String url;
-    private User user;
+    private long userId;
 }

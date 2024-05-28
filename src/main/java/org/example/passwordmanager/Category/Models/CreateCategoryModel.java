@@ -7,5 +7,5 @@ import org.example.passwordmanager.User.Models.User;
 public class CreateCategoryModel {
     private String categoryName;
     private String description;
-    private User user;
+    private long userId;
 }

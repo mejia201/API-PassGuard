@@ -12,5 +12,5 @@ public class GetCategoryByIdModel {
     private Long categoryId;
     private String categoryName;
     private String description;
-    private User user;
+    private long userId;
 }
