@@ -2,6 +2,7 @@ package org.example.passwordmanager.Platform.Models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.passwordmanager.User.Models.User;
 
 @Entity
 @Data
@@ -18,5 +19,9 @@ public class Platform {
     private String description;
     private String platform_name;
     private String url;
+
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User user;
 
 }

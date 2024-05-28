@@ -2,6 +2,7 @@ package org.example.passwordmanager.Category.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.example.passwordmanager.User.Models.User;
 
 @Entity
 @Data
@@ -14,5 +15,9 @@ public class Category {
 
     private String categoryName;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name= "user_id")
+    private User user;
 
 }

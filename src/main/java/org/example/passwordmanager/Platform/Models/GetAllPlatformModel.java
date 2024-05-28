@@ -1,6 +1,7 @@
 package org.example.passwordmanager.Platform.Models;
 
 import lombok.*;
+import org.example.passwordmanager.User.Models.User;
 
 @Data
 @AllArgsConstructor
@@ -12,4 +13,5 @@ public class GetAllPlatformModel {
     private String description;
     private String platform_name;
     private String url;
+    private User user;
 }
