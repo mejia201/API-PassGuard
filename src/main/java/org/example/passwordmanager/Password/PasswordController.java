@@ -8,6 +8,7 @@ import org.example.passwordmanager.Password.Commands.UpdatePassword.UpdatePasswo
 import org.example.passwordmanager.Password.Models.CreatePasswordModel;
 import org.example.passwordmanager.Password.Models.UpdatePasswordModel;
 import org.example.passwordmanager.Password.Queries.GetAllPassword.IGetAllPassword;
+import org.example.passwordmanager.Password.Queries.GetPasswordByUserId.IGetPasswordByUserId;
 import org.example.passwordmanager.ResponseApi.Model.BaseResponseModel;
 import org.example.passwordmanager.ResponseApi.Service.ResponseApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,14 @@ public class PasswordController {
     private IGetAllPassword getAllPasswordQuery;
     @Autowired
     private UpdatePassword updatePassword;
+    @Autowired
+    private IGetPasswordByUserId getPasswordByUserId;
+
+    @GetMapping("/ByUserId/{userId}")
+    public ResponseEntity<BaseResponseModel> GetCategoriesByUserId(@PathVariable Long userId) {
+        BaseResponseModel response = ResponseApiService.response(HttpStatus.OK.value(), getPasswordByUserId.execute(userId), "Successfully");
+        return ResponseEntity.ok(response);
+    }
 
     @GetMapping
     public ResponseEntity<BaseResponseModel> GetAllPassword() {
