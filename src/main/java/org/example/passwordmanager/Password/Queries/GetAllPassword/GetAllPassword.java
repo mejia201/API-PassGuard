@@ -1,6 +1,7 @@
 package org.example.passwordmanager.Password.Queries.GetAllPassword;
 
 import org.example.passwordmanager.Password.Models.GetAllPasswordModel;
+import org.example.passwordmanager.Password.Models.GetPasswordByUserIdModel;
 import org.example.passwordmanager.Password.Models.Password;
 import org.example.passwordmanager.Password.Repository.PasswordRepository;
 import org.modelmapper.ModelMapper;
@@ -19,18 +20,15 @@ public class GetAllPassword implements IGetAllPassword {
     @Autowired
     private ModelMapper _mapper;
 
-    public List<IGetAllPassword> execute(){
+    public List<GetAllPasswordModel> execute(){
 
         List<Password> passwords = _repository.findAll();
 
         return passwords.stream()
-                .map(this::convertToDto)
+                .map(password -> _mapper.map(password, GetAllPasswordModel.class))
                 .collect(Collectors.toList());
 
     }
 
-    private IGetAllPassword convertToDto(Password password) {
-        return (IGetAllPassword) _mapper.map(password, GetAllPasswordModel.class);
-    }
 
 }

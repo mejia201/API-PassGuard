@@ -17,11 +17,11 @@ public class GetAllPasswordModel {
 
     private Long passwordId;
 
-    private User user;
+    private Long userId;
 
-    private Platform platform;
+    private Long platform_id;
 
-    private Category category;
+    private Long categoryId;
 
     private String platformUsername;
     private String password;
