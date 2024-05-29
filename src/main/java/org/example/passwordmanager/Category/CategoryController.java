@@ -7,6 +7,7 @@ import org.example.passwordmanager.Category.Commands.UpdateCategory.IUpdateCateg
 import org.example.passwordmanager.Category.Models.CreateCategoryModel;
 import org.example.passwordmanager.Category.Models.UpdateCategoryModel;
 import org.example.passwordmanager.Category.Queries.GetAllCategory.IGetAllCategory;
+import org.example.passwordmanager.Category.Queries.GetCategoriesByUserId.IGetCategoriesByUserId;
 import org.example.passwordmanager.Category.Queries.GetCategoryById.IGetCategoryById;
 import org.example.passwordmanager.ResponseApi.Model.BaseResponseModel;
 import org.example.passwordmanager.ResponseApi.Service.ResponseApiService;
@@ -31,10 +32,18 @@ public class CategoryController {
     private IGetAllCategory getAllCategoryQuery;
     @Autowired
     private IGetCategoryById getCategoryByIdQuery;
+    @Autowired
+    private IGetCategoriesByUserId getCategoriesByUserId;
 
     @GetMapping
     public ResponseEntity<BaseResponseModel> GetAllCategories() {
         BaseResponseModel response = ResponseApiService.response(HttpStatus.OK.value(), getAllCategoryQuery.execute(), "Successfully");
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/ByUserId/{userId}")
+    public ResponseEntity<BaseResponseModel> GetCategoriesByUserId(@PathVariable Long userId) {
+        BaseResponseModel response = ResponseApiService.response(HttpStatus.OK.value(), getCategoriesByUserId.execute(userId), "Successfully");
         return ResponseEntity.ok(response);
     }
 
