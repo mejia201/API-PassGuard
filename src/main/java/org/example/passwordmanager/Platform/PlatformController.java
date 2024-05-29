@@ -3,6 +3,7 @@ package org.example.passwordmanager.Platform;
 import lombok.extern.slf4j.Slf4j;
 import org.example.passwordmanager.Category.Models.CreateCategoryModel;
 import org.example.passwordmanager.Category.Models.UpdateCategoryModel;
+import org.example.passwordmanager.Password.Queries.GetPasswordByUserId.IGetPasswordByUserId;
 import org.example.passwordmanager.Platform.Commands.CreatePlatform.ICreatePlatform;
 import org.example.passwordmanager.Platform.Commands.DeletePlatform.IDeletePlatform;
 import org.example.passwordmanager.Platform.Commands.UpdatePlatform.IUpdatePlatform;
@@ -10,6 +11,7 @@ import org.example.passwordmanager.Platform.Models.CreatePlatformModel;
 import org.example.passwordmanager.Platform.Models.UpdatePlatformModel;
 import org.example.passwordmanager.Platform.Queries.GetAllPlatform.IGetAllPlatform;
 import org.example.passwordmanager.Platform.Queries.GetPlatformById.IGetPlatformById;
+import org.example.passwordmanager.Platform.Queries.GetPlatformByUserId.IGetPlatformByUserId;
 import org.example.passwordmanager.ResponseApi.Model.BaseResponseModel;
 import org.example.passwordmanager.ResponseApi.Service.ResponseApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +35,15 @@ public class PlatformController {
     private IGetAllPlatform getAllPlatformQuery;
     @Autowired
     private IGetPlatformById getPlatformByIdQuery;
+    @Autowired
+    private IGetPlatformByUserId getPlatformByUserId;
 
 
+    @GetMapping("/ByUserId/{userId}")
+    public ResponseEntity<BaseResponseModel> GetPlatformByUserId(@PathVariable Long userId) {
+        BaseResponseModel response = ResponseApiService.response(HttpStatus.OK.value(), getPlatformByUserId.execute(userId), "Successfully");
+        return ResponseEntity.ok(response);
+    }
     @GetMapping
     public ResponseEntity<BaseResponseModel> GetAllPlatforms() {
         BaseResponseModel response = ResponseApiService.response(HttpStatus.OK.value(), getAllPlatformQuery.execute(), "Successfully");

@@ -4,6 +4,7 @@ import org.example.passwordmanager.Category.Models.Category;
 import org.example.passwordmanager.Category.Models.GetCategoryByIdModel;
 import org.example.passwordmanager.Category.Queries.GetCategoriesByUserId.GetCategoriesByUserId;
 import org.example.passwordmanager.Category.Repository.CategoryRepository;
+import org.example.passwordmanager.Password.Models.GetPasswordByUserIdModel;
 import org.example.passwordmanager.Password.Models.Password;
 import org.example.passwordmanager.Password.Repository.PasswordRepository;
 import org.modelmapper.ModelMapper;
@@ -21,12 +22,12 @@ public class GetPasswordByUserId implements IGetPasswordByUserId{
     @Autowired
     private ModelMapper _mapper;
 
-    public List<GetPasswordByUserId> execute(Long userId){
+    public List<GetPasswordByUserIdModel> execute(Long userId){
 
         List<Password> listEntity = _repository.findByUserId(userId);
 
         return listEntity.stream()
-                .map(category -> _mapper.map(category, GetPasswordByUserId.class))
+                .map(category -> _mapper.map(category, GetPasswordByUserIdModel.class))
                 .collect(Collectors.toList());
     }
 }

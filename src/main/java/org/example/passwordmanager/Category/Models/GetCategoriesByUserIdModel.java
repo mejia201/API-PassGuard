@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class GetCategoriesByUserId {
+public class GetCategoriesByUserIdModel {
     private Long categoryId;
     private String categoryName;
     private String description;

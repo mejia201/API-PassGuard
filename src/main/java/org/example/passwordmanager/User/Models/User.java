@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    private LocalDateTime creation_date;
+    private LocalDateTime creation_date = LocalDateTime.now();
     private String email;
     private String password;
     private String username;
